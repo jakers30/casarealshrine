@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Real Shrine</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f3f3f3;
+      color: #333;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      background-image: url('/images/Casarealshrine.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 60px;
+      font-family: 'Dancing Script', cursive;
+      letter-spacing: 1px;
+      z-index: 1;
+    }
+
+    /* --- CONTAINER GRID --- */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 20px;
+      padding: 20px;
+      background: white;
+      max-width: 1200px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- SIDEBAR --- */
+    .sidebar {
+      background-color: #e0f2f1;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      background: #26a69a;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sidebar button:hover {
+      background: #00796b;
+    }
+
+    /* --- MAIN CONTENT --- */
+    .content {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      min-height: 400px;
+      line-height: 1.6;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .content h2 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* --- LANGUAGE TOGGLE --- */
+    .lang-toggle {
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .lang-toggle button {
+      background: #26a69a;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: bold;
+    }
+
+    .lang-toggle button:hover {
+      background: #00796b;
+    }
+
+    /* --- RIGHT PANEL --- */
+    .right-panel {
+      background-color: #e3f2fd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      height: fit-content;
+    }
+
+    .right-panel img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pcenter {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #1565c0;
+    }
+
+    /* --- TAB CONTENT --- */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* --- GALLERY SECTION --- */
+    .gallery {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* --- VISITOR INFO SECTION --- */
+    .visitor-info {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .visitor-info h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 36px;
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .visitor-info p {
+      text-align: center;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: linear-gradient(to right, #4caf50, #2e7d32);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+    }
+
+    .titlefont {
+      font-family: 'Dancing Script', cursive;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Casa Real Shrine</h1>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <button onclick="showContent('history')">History</button>
+      <button onclick="showContent('info')">General Info</button>
+      <button onclick="showContent('significance')">Significance</button>
+      <button onclick="showContent('status')">Current Status</button>
+    </nav>
+
+    <!-- Main content -->
+    <main class="content">
+      <!-- Language toggle -->
+      <div class="lang-toggle">
+        <button id="langBtn" onclick="toggleLanguage()">Switch to Tagalog 🇵🇭</button>
+      </div>
+
+      <!-- HISTORY -->
+      <div id="history" class="tab-content active">
+        <h2>📜 History</h2>
+        <p class="en">
+          <strong>Built:</strong> The earliest version was made of light materials in <strong>1580</strong>.<br>
+          Over time it was reconstructed/stabilized — <strong>stone version in 1767</strong>;
+          <strong>bricks and mortar in 1786</strong>; <strong>restored in 1852</strong>;
+          modified in 1843; and a <strong>balcony added around 1918</strong>.<br><br>
+
+          <strong>Functions over time:</strong><br>
+          • <strong>Spanish colonial administration:</strong> Seat of the local government, office of the
+          gobernadorcillo;
+          Casa Tribunal; municipal presidency.<br>
+          • <strong>Printing press during the First Philippine Republic:</strong> Produced revolutionary newspapers such
+          as
+          <em>La Independencia, El Heraldo de la Revolucion, Kalayaan, Kaibigan ng Bayan</em>, and the <em>1899
+            Constitution</em>.<br>
+          • <strong>American period:</strong> Became seat of the American military government.<br>
+          • <strong>Other roles:</strong> Hospital (1923), annex of Bulacan High School (1941),
+          Japanese Chamber of Commerce during Japanese occupation.
+        </p>
+
+        <p class="tl" style="display: none;">
+          <strong>Itinatag / Unang anyo:</strong> Nasa anyong yari sa kawayan at kogon noong <strong>1580</strong>.<br>
+          Paglaon ay ginawang <strong>bato noong 1767</strong>; <strong>ladrilyo’t mortar noong 1786</strong>;
+          <strong>muling inayos noong 1852</strong>; may pagbabago noong 1843; at may <strong>balkonaheng naidagdag
+            noong 1918</strong>.<br><br>
+
+          <strong>Mga naging gamit nito sa pagdaan ng panahon:</strong><br>
+          • <strong>Pamahalaang Kastila:</strong> tanggapan ng gobernadorcillo, tribunal (Casa Tribunal), at presidencia
+          municipal.<br>
+          • <strong>Pambansang palimbagan noong Unang Republika ng Pilipinas:</strong> dito naimprenta ang
+          <em>La Independencia, El Heraldo de la Revolucion, Kalayaan, Kaibigan ng Bayan</em>, at <em>Saligang Batas ng
+            1899</em>.<br>
+          • <strong>Panahon ng Amerikano:</strong> ginamit bilang tanggapan ng kanilang pamahalaang militar.<br>
+          • <strong>Iba pang mga gamit:</strong> ospital (1923), annex ng Bulacan High School (1941),
+          himpilan ng Japanese Chamber of Commerce noong pananakop ng mga Hapon.
+        </p>
+      </div>
+
+      <!-- GENERAL INFORMATION -->
+      <div id="info" class="tab-content">
+        <h2>ℹ️ General Information</h2>
+        <p class="en">
+          <strong>Name:</strong> Casa Real Shrine / Museo ng Kasaysayang Pampulitika ng Pilipinas – Casa Real
+          Shrine.<br>
+          <strong>Location:</strong> Paseo del Congreso, Plaza Rizal, Malolos City, Bulacan, Philippines.<br>
+          <strong>What it is now:</strong> A museum/shrine housing exhibits on political history and heritage,
+          including revolutionary publications, memorabilia, and stories of Bulacan women and national figures.
+        </p>
+
+        <p class="tl" style="display: none;">
+          <strong>Pangalan:</strong> Casa Real Shrine / Museo ng Kasaysayang Pampulitika ng Pilipinas – Casa Real
+          Shrine.<br>
+          <strong>Lokasyon:</strong> Paseo del Congreso, Plaza Rizal, Lungsod ng Malolos, Bulacan, Pilipinas.<br>
+          <strong>Ano ito ngayon:</strong> Isang museo o dambana na naglalahad ng kasaysayang politikal at pamana ng mga
+          lumang lathalain, memorabilia, at mga pamanang kultura ng kababaihan sa Bulacan at mga pambansang
+          personalidad.
+        </p>
+      </div>
+
+      <!-- SIGNIFICANCE -->
+      <div id="significance" class="tab-content">
+        <h2>⭐ Significance</h2>
+        <p class="en">
+          Legally declared a <strong>National Shrine</strong> by <strong>President Diosdado Macapagal</strong> through
+          <strong>Executive Order No. 173</strong> on <strong>October 4, 1965</strong>.<br><br>
+
+          <strong>Cultural & Symbolic Importance:</strong><br>
+          • Houses relics of the <em>Brave Women of Malolos</em>, who petitioned for schooling in Spanish — an important
+          act in
+          the history of <strong>Filipino women’s rights and education</strong>.<br>
+          • Offers insight into the <strong>political evolution</strong> of the Philippines, colonial administration,
+          <strong>press freedom</strong>, and struggle for independence.<br>
+          • Its architecture (<em>bahay na bato</em> style) and artifacts reflect <strong>19th-century Bulacan
+            society</strong>.
+        </p>
+
+        <p class="tl" style="display: none;">
+          Inihayag bilang <strong>Pambansang Dambana</strong> sa bisa ng <strong>Executive Order No. 173</strong> noong
+          <strong>Oktubre 4, 1965</strong>, ng <strong>Pangulong Diosdado Macapagal</strong>.<br><br>
+
+          <strong>Kultura at Sinisimbolo:</strong><br>
+          • Tahanan ng mga alaala ng <em>Brave Women of Malolos</em> na humiling ng paaralang magtuturo ng wikang
+          Kastila —
+          isang makasaysayang hakbang sa karapatan at edukasyon ng kababaihan sa Pilipinas.<br>
+          • Nagbibigay ng pananaw sa <strong>ebolusyon ng pulitika</strong> sa bansa, administrasyong kolonyal,
+          <strong>kalayaan sa pamamahayag</strong>, at pakikibaka para sa kasarinlan.<br>
+          • Ang arkitektura nitong <em>bahay na bato</em> at mga antigong kagamitan ay sumasalamin sa
+          <strong>lipunang Bulacan noong ika-19 na siglo</strong>.
+        </p>
+      </div>
+
+      <!-- CURRENT STATUS -->
+      <div id="status" class="tab-content">
+        <h2>🏛️ Current Status</h2>
+        <p class="en">
+          <strong>[Placeholder]</strong> The Casa Real Shrine continues to operate as a protected heritage site under
+          the
+          <strong>National Historical Commission</strong>. It regularly hosts <em>educational tours, cultural
+            events</em>,
+          and <em>temporary exhibitions</em>.
+        </p>
+
+        <p class="tl" style="display: none;">
+          <strong>[Placeholder]</strong> Ang Casa Real Shrine ay patuloy na pinangangalagaan bilang isang
+          <strong>pamanang lugar</strong> sa ilalim ng <strong>National Historical Commission</strong>.
+          Paminsan-minsan itong nagho-host ng mga <em>eksibit, edukasyonal na tour</em>, at <em>kultural na gawain</em>.
+        </p>
+      </div>
+    </main>
+
+
+    <!-- Right Panel -->
+    <aside class="right-panel">
+      <p class="pcenter">Casa Real Shrine</p>
+      <img src="/images/Casarealshrine.jpeg" alt="Casa Real Shrine 1">
+
+      <p class="pcenter">Historic Landmark</p>
+      <img src="/images/landmark.JPG" alt="Landmark">
+    </aside>
+  </div>
+
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-grid">
+      <img src="/images/galleryImg_1.jpeg" alt="Gallery Image 1">
+      <img src="/images/galleryImg_2.jpg" alt="Gallery Image 2">
+      <img src="/images/galleryImg_3.jpg" alt="Gallery Image 3">
+      <img src="/images/galleryImg_4.jpg" alt="Gallery Image 4">
+      <img src="/images/galleryImg_5.jpeg" alt="Gallery Image 5">
+      <img src="/images/galleryImg_6.jpg" alt="Gallery Image 6">
+    </div>
+
+
+  </section>
+
+
+
+  <!-- Visitor Info Section -->
+  <section class="visitor-info">
+    <h2 class="titlefont">Plan Your Visit to Malolos</h2>
+    <div style="text-align: center;">
+      Address: Paseo del Congreso, Malolos City, Bulacan.<br>
+      Operating Hours: Tuesday to Sunday, 9:00 AM – 4:00 PM.<br>
+      Entrance Fee: PHP 30 (Adults), PHP 20 (Students/Seniors).<br><br>
+      </p>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3856.3312948601614!2d120.81432321484177!3d14.84755127627448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396541ccedcc431%3A0x86872584d4ed833c!2sCasa%20Real%20Shrine!5e0!3m2!1sen!2sph!4v1633973142279!5m2!1sen!2sph"
+        ‎ width="100%" ‎ height="300" ‎ style="border:0; border-radius: 6px;" ‎ allowfullscreen="" ‎ loading="lazy" ‎
+        referrerpolicy="no-referrer-when-downgrade">
+        ‎ </iframe>
+      ‎
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Casa Real Shrine | Designed by Jake Olivares
+  </footer>
+
+  <!-- Script -->
+  <script>
+    function showContent(tabId) {
+      document.querySelectorAll('.tab-content').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      const enTexts = document.querySelectorAll('.en');
+      const tlTexts = document.querySelectorAll('.tl');
+      const langBtn = document.getElementById('langBtn');
+
+      if (currentLang === 'en') {
+        enTexts.forEach(el => el.style.display = 'none');
+        tlTexts.forEach(el => el.style.display = 'block');
+        currentLang = 'tl';
+        langBtn.textContent = 'Switch to English 🇬🇧';
+      } else {
+        enTexts.forEach(el => el.style.display = 'block');
+        tlTexts.forEach(el => el.style.display = 'none');
+        currentLang = 'en';
+        langBtn.textContent = 'Switch to Tagalog 🇵🇭';
+      }
+    }
+  </script>
+
+</body>
+
+</html>
